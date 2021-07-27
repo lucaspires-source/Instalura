@@ -8,13 +8,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-
+const theme = {
+  colors: {
+    primary: '#',
+  },
+}
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider >
+      <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
