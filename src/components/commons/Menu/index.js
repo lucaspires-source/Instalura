@@ -1,25 +1,13 @@
-import styled from "styled-components";
-
-const MenuWrapper = styled.nav`
-  font-family: "Rubik", "sans-serif";
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 18px;
-  padding-left: 28px;
-  padding-right: 28px;
-`;
+import { MenuWrapper } from "./styles/MenuWrapper";
 
 const Menu = () => {
   return (
     <MenuWrapper>
-      <div>Logo Area</div>
-      <div>Links Area</div>
-      <div>Buttons Area</div>
+      <MenuWrapper.LeftArea>Logo Area</MenuWrapper.LeftArea>
+      <MenuWrapper.CenterArea>Links Area</MenuWrapper.CenterArea>
+      <MenuWrapper.RightArea>Buttons Area</MenuWrapper.RightArea>
     </MenuWrapper>
   );
 };
-
 
 export default Menu;
