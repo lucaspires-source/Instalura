@@ -6,8 +6,11 @@ const ButtonGhost = css`
 `;
 
 const ButtonDefault = css`
-  background-color: #d7385e;
   color: #fff;
+  background-color: ${(props) =>{
+      return props.theme.colors.primary
+  }}
+
 `;
 export const Button = styled.button`
   border: 0;
