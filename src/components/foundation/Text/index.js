@@ -1,18 +1,24 @@
 import styled, { css } from "styled-components";
 
-const TextBase = styled.span`
-  ${(props) => {
-    if (props.variant === "smallestException") {
-      return css`
-    font-size:${({ theme }) =>
-      theme.typographyVariants.smallestException.fontSize};
-    font-weight${({ theme }) =>
-      theme.typographyVariants.smallestException.font_weight};
-    line-height:${({ theme }) =>
-      theme.typographyVariants.smallestException.lineHeight};
+export const TextStyleVartiansMap ={
+  smallestException : css `
+      font-size: ${({ theme }) => theme.typographyVariants.smallestException.fontSize};
+      font-weight: ${({ theme }) =>theme.typographyVariants.smallestException.font_weight};
+      line-height: ${({ theme }) =>theme.typographyVariants.smallestException.lineHeight};
+  
+  `,
+  paragraph1 : css `
+      font-size:${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+      font-weight:${({ theme }) =>theme.typographyVariants.paragraph1.font_weight};
+      line-height:${({ theme }) =>theme.typographyVariants.paragraph1.lineHeight};
+  
   `
-    }
-  }}
+
+
+}
+
+const TextBase = styled.span`
+  ${(props) => TextStyleVartiansMap[props.variant]}
 `;
 const Text = ({ variant, tag, children }) => {
   return (
