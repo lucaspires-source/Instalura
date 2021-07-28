@@ -15,7 +15,7 @@ const Menu = () => {
       <MenuWrapper.CenterArea>
         {links.map((link) => {
           return (
-            <li>
+            <li key={link.url}>
               <a href={link.url}>{link.texto}</a>
             </li>
           );
