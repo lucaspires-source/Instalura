@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import PropTypes from 'prop-types';
 export const MenuWrapper = styled.nav`
   font-family: "Rubik", "sans-serif";
   display: flex;
@@ -54,3 +54,7 @@ padding: 0;
   order: 2;
   justify-content: flex-end;
 `;
+
+MenuWrapper.propTypes = {
+  children:PropTypes.node.isRequired,
+}

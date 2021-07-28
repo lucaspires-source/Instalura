@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import get from "lodash/get";
+import PropTypes from 'prop-types';
 import { TextStyleVartiansMap } from "../../foundation/Text";
 const ButtonGhost = css`
   background-color: transparent;
@@ -32,3 +33,10 @@ export const Button = styled.button`
     opacity: 0.5;
   }
 `;
+
+
+Button.propTypes = {
+  children:PropTypes.node.isRequired,
+  ghost: PropTypes.bool,
+  variant: PropTypes.string.isRequired
+}

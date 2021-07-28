@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import PropTypes from 'prop-types';
 export const TextStyleVartiansMap = {
   title: css`
     font-size: ${({ theme }) => theme.typographyVariants.title.fontSize};
@@ -59,4 +59,10 @@ Text.defaultProps = {
   tag: "span",
   variant: "paragraph1",
 };
+
+Text.propTypes ={
+  tag:PropTypes.string.isRequired,
+  variant:PropTypes.string.isRequired,
+  children:PropTypes.node.isRequired,
+}
 export default Text;

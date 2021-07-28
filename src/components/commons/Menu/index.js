@@ -2,6 +2,7 @@ import { MenuWrapper } from "./styles/MenuWrapper";
 import { Logo } from "../../../theme/Logo";
 import { Button } from "../Button";
 import Text  from "../../foundation/Text";
+
 const Menu = () => {
   const links = [
     { texto: "Home", url: "/" },
@@ -33,5 +34,4 @@ const Menu = () => {
     </MenuWrapper>
   );
 };
-
 export default Menu;
