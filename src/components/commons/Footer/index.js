@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 const FooterWrapper = styled.footer`
   padding: 14px;
   display: flex;
@@ -41,4 +41,10 @@ export default function Footer(props) {
       </p>
     </FooterWrapper>
   );
+
+
+}
+
+Footer.propTypes = {
+  children:PropTypes.node.isRequired,
 }

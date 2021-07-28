@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import get from "lodash/get";
+import PropTypes from 'prop-types';
+import { TextStyleVartiansMap } from "../../foundation/Text";
 const ButtonGhost = css`
   background-color: transparent;
   color: ${(props) => {
@@ -22,11 +24,19 @@ export const Button = styled.button`
   font-weight: bold;
   opacity: 1;
   border-radius: 8px;
-  ${({ghost}) => (ghost ? ButtonGhost : ButtonDefault)} 
+  ${TextStyleVartiansMap.smallestException}
+  ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
   transition: opacity ${({ theme }) => theme.transition};
   border-radius: ${({ theme }) => theme.borderRadius};
   &:hover,
-&:focus {
+  &:focus {
     opacity: 0.5;
   }
 `;
+
+
+Button.propTypes = {
+  children:PropTypes.node.isRequired,
+  ghost: PropTypes.bool,
+  variant: PropTypes.string.isRequired
+}
