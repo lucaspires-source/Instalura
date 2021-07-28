@@ -22,13 +22,9 @@ export const Button = styled.button`
   font-weight: bold;
   opacity: 1;
   border-radius: 8px;
-  ${(props) => {
-    if (props.ghost) {
-      return ButtonGhost;
-    } else {
-      return ButtonDefault;
-    }
-  }}
+  ${({ghost}) => (ghost ? ButtonGhost : ButtonDefault)} 
+  transition: opacity ${({ theme }) => theme.transition};
+  border-radius: ${({ theme }) => theme.borderRadius};
   &:hover,
 &:focus {
     opacity: 0.5;
