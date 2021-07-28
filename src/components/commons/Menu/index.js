@@ -22,8 +22,8 @@ const Menu = () => {
         })}
       </MenuWrapper.CenterArea>
       <MenuWrapper.RightArea>
-        <Button ghost>Entrar</Button>
-        <Button>Cadastrar</Button>
+        <Button ghost variant="secondary.main">Entrar</Button>
+        <Button variant="primary.main">Cadastrar</Button>
       </MenuWrapper.RightArea>
     </MenuWrapper>
   );
