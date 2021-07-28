@@ -31,9 +31,9 @@ export default function Footer(props) {
         <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
       </a>
       <p>
-        Orgulhosamente criado durante por Lucas Ribeiro Pires
+        Feito por <a href="https://github.com/lucaspires-source">Lucas Ribeiro Pires</a>
         {' '}
-        o
+        no
         {' '}
         <a href="https://www.alura.com.br/">
           <span>Bootcamp Alura JAM Stack</span>
