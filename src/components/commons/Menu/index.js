@@ -1,6 +1,7 @@
 import { MenuWrapper } from "./styles/MenuWrapper";
 import { Logo } from "../../../theme/Logo";
 import { Button } from "../Button";
+import Text  from "../../foundation/Text";
 const Menu = () => {
   const links = [
     { texto: "Home", url: "/" },
@@ -16,13 +17,17 @@ const Menu = () => {
         {links.map((link) => {
           return (
             <li key={link.url}>
-              <a href={link.url}>{link.texto}</a>
+              <Text variant="smallestException" tag="a" href={link.url}>
+                {link.texto}
+              </Text>
             </li>
           );
         })}
       </MenuWrapper.CenterArea>
       <MenuWrapper.RightArea>
-        <Button ghost variant="secondary.main">Entrar</Button>
+        <Button ghost variant="secondary.main">
+          Entrar
+        </Button>
         <Button variant="primary.main">Cadastrar</Button>
       </MenuWrapper.RightArea>
     </MenuWrapper>
