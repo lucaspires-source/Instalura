@@ -1,5 +1,6 @@
 import Menu from "../src/components/commons/Menu";
 import Footer from "../src/components/commons/Footer";
+import Main from '../src/components/commons/Main'
 export default function Home() {
   return (
     <div
@@ -12,6 +13,7 @@ export default function Home() {
       }}
     >
       <Menu />
+      <Main />
       <Footer />
     </div>
   );
