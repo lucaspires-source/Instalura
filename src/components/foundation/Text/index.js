@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 import PropTypes from 'prop-types';
+import breakpointsMedia  from '../../../theme/utils/breakpointsMedia'
+import propToStyle  from '../../../theme/utils/propToStyle';
+import get from 'lodash/get'; 
 export const TextStyleVartiansMap = {
   title: css`
   ${({ theme }) => css`
@@ -57,6 +60,8 @@ export const TextStyleVartiansMap = {
 
 const TextBase = styled.span`
   ${(props) => TextStyleVartiansMap[props.variant]}
+  color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
+  ${propToStyle('textAlign')}
 `;
 const Text = ({ variant, tag, children, ...props }) => {
   return (
@@ -75,5 +80,6 @@ Text.propTypes ={
   tag:PropTypes.string.isRequired,
   variant:PropTypes.string.isRequired,
   children:PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
 }
 export default Text;
