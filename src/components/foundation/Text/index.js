@@ -2,10 +2,21 @@ import styled, { css } from "styled-components";
 import PropTypes from 'prop-types';
 export const TextStyleVartiansMap = {
   title: css`
-    font-size: ${({ theme }) => theme.typographyVariants.title.fontSize};
-    font-weight: ${({ theme }) => theme.typographyVariants.title.font_weight};
-    line-height: ${({ theme }) => theme.typographyVariants.title.lineHeight};
-  `,
+  ${({ theme }) => css`
+    font-size: ${theme.typographyVariants.titleXS.fontSize};
+    font-weight: ${theme.typographyVariants.titleXS.fontWeight};
+    line-height: ${theme.typographyVariants.titleXS.lineHeight};
+  `}
+  ${breakpointsMedia({
+    md: css`
+      ${({ theme }) => css`
+        font-size: ${theme.typographyVariants.title.fontSize};
+        font-weight: ${theme.typographyVariants.title.fontWeight};
+        line-height: ${theme.typographyVariants.title.lineHeight};
+      `}
+    `,
+  })}
+`,
 
   titleXS: css`
     font-size: ${({ theme }) => theme.typographyVariants.titleXS.fontSize};
@@ -47,9 +58,9 @@ export const TextStyleVartiansMap = {
 const TextBase = styled.span`
   ${(props) => TextStyleVartiansMap[props.variant]}
 `;
-const Text = ({ variant, tag, children }) => {
+const Text = ({ variant, tag, children, ...props }) => {
   return (
-    <TextBase variant={variant} as={tag}>
+    <TextBase variant={variant} as={tag} {...props}>
       {children}
     </TextBase>
   );
