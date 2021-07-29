@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import get from "lodash/get";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { TextStyleVartiansMap } from "../../foundation/Text";
+import breakpointsMedia from "../../../theme/utils/breakpointsMedia"
 const ButtonGhost = css`
   background-color: transparent;
   color: ${(props) => {
@@ -24,7 +25,6 @@ export const Button = styled.button`
   font-weight: bold;
   opacity: 1;
   border-radius: 8px;
-  ${TextStyleVartiansMap.smallestException}
   ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
   transition: opacity ${({ theme }) => theme.transition};
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -32,11 +32,21 @@ export const Button = styled.button`
   &:focus {
     opacity: 0.5;
   }
+
+  ${breakpointsMedia({
+    xs:css`
+    
+    ${TextStyleVartiansMap.smallestException}
+    `,
+    md:css`
+    ${TextStyleVartiansMap.paragraph1}
+    
+    `
+  })}
 `;
 
-
 Button.propTypes = {
-  children:PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   ghost: PropTypes.bool,
-  variant: PropTypes.string.isRequired
-}
+  variant: PropTypes.string.isRequired,
+};
