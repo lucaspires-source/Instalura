@@ -3,6 +3,7 @@ import get from "lodash/get";
 import PropTypes from "prop-types";
 import { TextStyleVartiansMap } from "../../foundation/Text";
 import breakpointsMedia from "../../../theme/utils/breakpointsMedia"
+import  propToStyle  from '../../../theme/utils/propToStyle';
 const ButtonGhost = css`
   background-color: transparent;
   color: ${(props) => {
@@ -25,6 +26,8 @@ export const Button = styled.button`
   font-weight: bold;
   opacity: 1;
   border-radius: 8px;
+  ${propToStyle('margin')}
+  ${propToStyle('display')}
   ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
   transition: opacity ${({ theme }) => theme.transition};
   border-radius: ${({ theme }) => theme.borderRadius};
