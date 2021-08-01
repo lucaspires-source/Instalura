@@ -1,7 +1,8 @@
-import styled,{css} from "styled-components";
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import  breakpointsMedia  from '../../../../theme/utils/breakpointsMedia';
-import { TextStyleVartiansMap } from '../../../foundation/Text'
+import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
+import { TextStyleVartiansMap } from '../../../foundation/Text';
+// eslint-disable-next-line import/prefer-default-export
 export const MenuWrapper = styled.nav`
   font-family: "Rubik", "sans-serif";
   display: flex;
@@ -47,7 +48,6 @@ ${breakpointsMedia({
     `,
   })}
 `;
-
 
 MenuWrapper.CenterArea = styled.div`
 padding: 0;
@@ -112,5 +112,5 @@ padding: 0;
 `;
 
 MenuWrapper.propTypes = {
-  children:PropTypes.node.isRequired,
-}
+  children: PropTypes.node.isRequired,
+};
