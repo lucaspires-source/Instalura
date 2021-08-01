@@ -1,12 +1,11 @@
 import { css } from 'styled-components';
-import  breakpointsMedia  from './breakpointsMedia';
+import breakpointsMedia from './breakpointsMedia';
 
-const propToStyle = (propName) => {
-  return (props) => {
-    const propValue = props[propName];
+const propToStyle = (propName) => (props) => {
+  const propValue = props[propName];
 
-    if (typeof propValue === 'object') {
-      return css`
+  if (typeof propValue === 'object') {
+    return css`
         ${breakpointsMedia({
     ...(propValue.xs && {
       xs: { [propName]: propValue.xs },
@@ -25,12 +24,11 @@ const propToStyle = (propName) => {
     }),
   })}
       `;
-    }
+  }
 
-    return {
-      [propName]: props[propName],
-    };
+  return {
+    [propName]: props[propName],
   };
-}
+};
 
-export default propToStyle
+export default propToStyle;

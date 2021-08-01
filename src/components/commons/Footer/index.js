@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
 const FooterWrapper = styled.footer`
   padding: 14px;
   display: flex;
@@ -26,12 +27,15 @@ const FooterWrapper = styled.footer`
 
 export default function Footer(props) {
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <FooterWrapper {...props}>
       <a href="https://www.alura.com.br/">
         <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
       </a>
       <p>
-        Feito por <a href="https://github.com/lucaspires-source">Lucas Ribeiro Pires</a>
+        Feito por
+        {' '}
+        <a href="https://github.com/lucaspires-source">Lucas Ribeiro Pires</a>
         {' '}
         no
         {' '}
@@ -41,10 +45,8 @@ export default function Footer(props) {
       </p>
     </FooterWrapper>
   );
-
-
 }
 
 Footer.propTypes = {
-  children:PropTypes.node.isRequired,
-}
+  children: PropTypes.node.isRequired,
+};
