@@ -5,9 +5,21 @@ import { Grid } from "../../foundation/layout/Grid";
 
 const Main = () => {
   return (
-    <Grid.Container>
+    <Grid.Container
+      marginTop={{
+        xs: "32px",
+        md: "75px",
+      }}
+    >
       <Grid.Row>
-        <Grid.Col offset={{ xs: 0, md: 1 }} value={{ xs: 12, md: 5 }}>
+        <Grid.Col
+          offset={{ xs: 0, md: 1 }}
+          value={{ xs: 12, md: 5 }}
+          display="flex"
+          alignItems="flex-start"
+          justifyContent="center"
+          flexDirection="column"
+        >
           <Text
             variant="title"
             tag="h1"
