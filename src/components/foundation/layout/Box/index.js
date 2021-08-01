@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import breakpointsMedia from "../../../../theme/utils/breakpointsMedia";
-import propToStyle from "../../../../theme/utils/propToStyle";
+import styled from 'styled-components';
+import propToStyle from '../../../../theme/utils/propToStyle';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Box = styled.div`
-  ${propToStyle("flex")}
-  ${propToStyle("display")}
-  ${propToStyle("flexDirection")}
-  ${propToStyle("justifyContent")}
-  ${propToStyle("flexWrap")}
-  ${propToStyle("backgroundImage")}
-  ${propToStyle("backgroundRepeat")}
-  ${propToStyle("backgroundPosition")}
+  ${propToStyle('flex')}
+  ${propToStyle('display')}
+  ${propToStyle('flexDirection')}
+  ${propToStyle('justifyContent')}
+  ${propToStyle('flexWrap')}
+  ${propToStyle('backgroundImage')}
+  ${propToStyle('backgroundRepeat')}
+  ${propToStyle('backgroundPosition')}
 `;

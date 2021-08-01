@@ -1,6 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
+// eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle`
 * {
     box-sizing: border-box;
