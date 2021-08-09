@@ -14,7 +14,9 @@ const Main = () => {
         onClose={() => {
           setModalOpen(false);
         }}
-      />
+      >
+        Qualquer coisa aqui
+      </Modal>
       <Grid.Container
         marginTop={{
           xs: '32px',
