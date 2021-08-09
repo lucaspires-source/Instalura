@@ -5,8 +5,11 @@ import { ModalWrapper } from './styles';
 const Modal = ({ isOpen, onClose, children }) => (
   <ModalWrapper
     isOpen={isOpen}
-    onClick={() => {
-      onClose();
+    onClick={(e) => {
+      const isSafeArea = e.target.closest('[data-modal-safe-area="true"]');
+      if (!isSafeArea) {
+        onClose();
+      }
     }}
   >
     {children}

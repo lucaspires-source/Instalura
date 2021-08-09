@@ -3,6 +3,7 @@ import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { Grid } from '../../foundation/layout/Grid';
 import Modal from '../Modal';
+import { Box } from '../../foundation/layout/Box';
 
 const Main = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -15,7 +16,12 @@ const Main = () => {
           setModalOpen(false);
         }}
       >
-        Qualquer coisa aqui
+        <Box
+          backgroundColor="white"
+          data-modal-safe-area="true"
+        >
+          Qualquer coisa aqui
+        </Box>
       </Modal>
       <Grid.Container
         marginTop={{
