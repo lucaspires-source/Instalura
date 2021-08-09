@@ -16,12 +16,18 @@ const Main = () => {
           setModalOpen(false);
         }}
       >
-        <Box
-          backgroundColor="white"
-          data-modal-safe-area="true"
-        >
-          Qualquer coisa aqui
-        </Box>
+        {
+          (props) => (
+            <Box
+              backgroundColor="white"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...props}
+            >
+              Qualquer coisa aqui
+            </Box>
+          )
+        }
+
       </Modal>
       <Grid.Container
         marginTop={{
