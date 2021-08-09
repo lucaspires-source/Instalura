@@ -9,7 +9,12 @@ const Main = () => {
 
   return (
     <>
-      <Modal isOpen={isModalOpen} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      />
       <Grid.Container
         marginTop={{
           xs: '32px',
