@@ -12,9 +12,18 @@ const Modal = ({ isOpen, onClose, children }) => (
       }
     }}
   >
-    {children({
-      'data-modal-safe-area': 'true',
-    })}
+    <div
+      style={{
+        display: 'flex',
+        flex: '1',
+      }}
+    >
+
+      {children({
+        'data-modal-safe-area': 'true',
+      })}
+    </div>
+
   </ModalWrapper>
 );
 
