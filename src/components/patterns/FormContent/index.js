@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
+import Text from '../../foundation/Text';
 
 const FormContent = () => {
   const [userInfo, setUserInfo] = useState({
@@ -23,6 +24,13 @@ const FormContent = () => {
   };
   return (
     <form onSubmit={handleSubmit}>
+      <Text variant="title" tag="h1" color="tertiary.main">
+        Pronto para saber da vida dos outros?
+      </Text>
+
+      <Text variant="paragraph1" tag="p" color="tertiary.light" marginBottom="32px">
+        Você está a um passo de saber tudo que está rolando no bairro, complete seu cadastro agora!
+      </Text>
       <div>
         <TextField
           placeholder="Email"
