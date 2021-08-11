@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../../commons/Button';
+import TextField from '../../forms/TextField';
 
 const FormContent = () => {
   const [userInfo, setUserInfo] = useState({
@@ -23,7 +24,7 @@ const FormContent = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <input
+        <TextField
           placeholder="Email"
           name="email"
           value={userInfo.email}
@@ -31,7 +32,7 @@ const FormContent = () => {
         />
       </div>
       <div>
-        <input
+        <TextField
           placeholder="Usuario"
           name="usuario"
           value={userInfo.usuario}

@@ -71,11 +71,12 @@ const Text = ({
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
+  children: null,
 };
 
 Text.propTypes = {
   tag: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
 };
 export default Text;
