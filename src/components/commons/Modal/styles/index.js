@@ -11,9 +11,9 @@ export const ModalWrapper = styled.div`
   right: 0;
   bottom: 0;
   margin: auto;
-  overflow: scroll;
   transition: 0.3s;
   z-index:100;
+  text-align:center;
   ${({ isOpen }) => {
     if (isOpen) {
       return css`
