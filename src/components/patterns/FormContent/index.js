@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../../commons/Button';
 
 const FormContent = () => {
   const [userInfo, setUserInfo] = useState({
@@ -37,9 +38,14 @@ const FormContent = () => {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" disabled={isFormValid}>
+      <Button
+        variant="primary.main"
+        type="submit"
+        disabled={isFormValid}
+        fullWidth
+      >
         Cadastrar
-      </button>
+      </Button>
     </form>
   );
 };

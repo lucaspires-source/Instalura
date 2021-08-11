@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import FormContent from '../FormContent';
-import Box from '../../foundation/layout/Box';
-import Grid from '../../foundation/layout/Grid';
+import { Box } from '../../foundation/layout/Box';
+import { Grid } from '../../foundation/layout/Grid';
 
+// eslint-disable-next-line react/prop-types
 const FormCadastro = ({ props }) => (
 
   <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="flex-end">
