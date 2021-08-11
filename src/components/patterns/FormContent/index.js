@@ -2,7 +2,15 @@ import React from 'react';
 
 const FormContent = () => (
   <form>
-    Form Content
+    <div>
+      <input placeholder="Email" />
+    </div>
+    <div>
+      <input placeholder="usuario" />
+    </div>
+    <button type="submit">
+      Cadastrar
+    </button>
   </form>
 );
 

@@ -3,7 +3,7 @@ import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { Grid } from '../../foundation/layout/Grid';
 import Modal from '../Modal';
-import { Box } from '../../foundation/layout/Box';
+import FormCadastro from '../../patterns/FormCadastro';
 
 const Main = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -18,13 +18,7 @@ const Main = () => {
       >
         {
           (props) => (
-            <Box
-              backgroundColor="white"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...props}
-            >
-              Qualquer coisa aqui
-            </Box>
+            <FormCadastro props={props} />
           )
         }
 
