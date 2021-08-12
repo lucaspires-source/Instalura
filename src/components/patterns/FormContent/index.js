@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { Lottie } from '@crello/react-lottie';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Text from '../../foundation/Text';
+import errorAnimation from './animations/error.json';
+import successAnimation from './animations/sucess.json';
+import { Box } from '../../foundation/layout/Box';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -92,12 +96,26 @@ const FormContent = () => {
       </Button>
       {
         isFormSubmited && submissionStatus === formStates.DONE && (
-          <p>Deu Green!</p>
+          <Box display="flex" justifyContent="center">
+            <Lottie
+              width="150px"
+              height="150px"
+              config={{ animationData: successAnimation, loop: false, autoplay: true }}
+            />
+            {/* https://lottiefiles.com/43920-success-alert-icon */}
+          </Box>
         )
       }
       {
         isFormSubmited && submissionStatus === formStates.ERROR && (
-          <p>Deu Ruim!</p>
+          <Box display="flex" justifyContent="center">
+            <Lottie
+              width="150px"
+              height="150px"
+              config={{ animationData: errorAnimation, loop: false, autoplay: true }}
+            />
+            {/* https://lottiefiles.com/13865-sign-for-error-flat-style */}
+          </Box>
         )
       }
 
