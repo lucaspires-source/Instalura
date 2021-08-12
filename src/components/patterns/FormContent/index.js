@@ -6,7 +6,7 @@ import Text from '../../foundation/Text';
 const FormContent = () => {
   const [userInfo, setUserInfo] = useState({
     usuario: '',
-    email: '',
+    nome: '',
   });
 
   const handleChange = (e) => {
@@ -18,9 +18,32 @@ const FormContent = () => {
     });
   };
 
-  const isFormValid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+  const isFormValid = userInfo.usuario.length === 0 || userInfo.nome.length === 0;
   const handleSubmit = (e) => {
+    const userDTO = {
+      username: userInfo.usuario,
+      name: userInfo.nome,
+    };
     e.preventDefault();
+    fetch('https://instalura-api.vercel.app/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDTO),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('Nao foi possivel cadastrar o usuario agora ');
+      })
+      .then((respostaConvertidaEmObjeto) => {
+        console.log(respostaConvertidaEmObjeto);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -34,8 +57,8 @@ const FormContent = () => {
       <div>
         <TextField
           placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          name="nome"
+          value={userInfo.nome}
           onChange={handleChange}
         />
       </div>
