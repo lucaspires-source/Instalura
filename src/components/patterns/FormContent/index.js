@@ -3,7 +3,16 @@ import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Text from '../../foundation/Text';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 const FormContent = () => {
+  const [isFormSubmited, setIsFormSubmited] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [userInfo, setUserInfo] = useState({
     usuario: '',
     nome: '',
@@ -25,6 +34,7 @@ const FormContent = () => {
       name: userInfo.nome,
     };
     e.preventDefault();
+    setIsFormSubmited(true);
     fetch('https://instalura-api.vercel.app/api/users', {
       method: 'POST',
       headers: {
@@ -38,10 +48,12 @@ const FormContent = () => {
         }
         throw new Error('Nao foi possivel cadastrar o usuario agora ');
       })
-      .then((respostaConvertidaEmObjeto) => {
-        console.log(respostaConvertidaEmObjeto);
+      .then((resObj) => {
+        console.log(resObj);
+        setSubmissionStatus(formStates.DONE);
       })
       .catch((error) => {
+        setSubmissionStatus(formStates.ERROR);
         console.error(error);
       });
   };
@@ -78,6 +90,17 @@ const FormContent = () => {
       >
         Cadastrar
       </Button>
+      {
+        isFormSubmited && submissionStatus === formStates.DONE && (
+          <p>Deu Green!</p>
+        )
+      }
+      {
+        isFormSubmited && submissionStatus === formStates.ERROR && (
+          <p>Deu Ruim!</p>
+        )
+      }
+
     </form>
   );
 };
