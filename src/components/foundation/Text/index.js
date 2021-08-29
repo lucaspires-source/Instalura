@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import React from 'react';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import propToStyle from '../../../theme/utils/propToStyle';
+import Link from '../../commons/Link';
 
 export const TextStyleVartiansMap = {
   title: css`
@@ -60,23 +61,35 @@ const TextBase = styled.span`
   ${propToStyle('margin')}
 `;
 const Text = ({
-  variant, tag, children, ...props
-}) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <TextBase variant={variant} as={tag} {...props}>
-    {children}
-  </TextBase>
-);
+  variant, tag, children, href, ...props
+}) => {
+  if (props.href) {
+    return (
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <TextBase href={href} variant={variant} as={Link} {...props}>
+        {children}
+      </TextBase>
+    );
+  }
+  return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <TextBase variant={variant} as={tag} {...props}>
+      {children}
+    </TextBase>
+  );
+};
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null,
+  href: '',
 };
 
 Text.propTypes = {
   tag: PropTypes.string,
   children: PropTypes.node,
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
+  href: PropTypes.string,
 };
 export default Text;
