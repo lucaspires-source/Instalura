@@ -1,8 +1,9 @@
 import React from 'react';
+import NextLink from 'next/link';
 import { MenuWrapper } from './styles/MenuWrapper';
 import { Logo } from '../../../theme/Logo';
 import { Button } from '../Button';
-import Text from '../../foundation/Text';
+// import Text from '../../foundation/Text';
 
 const Menu = () => {
   const links = [
@@ -18,9 +19,11 @@ const Menu = () => {
       <MenuWrapper.CenterArea>
         {links.map((link) => (
           <li key={link.url}>
-            <Text variant="smallestException" tag="a" href={link.url}>
-              {link.texto}
-            </Text>
+            <NextLink href={link.url}>
+              <a>
+                {link.texto}
+              </a>
+            </NextLink>
           </li>
         ))}
       </MenuWrapper.CenterArea>
