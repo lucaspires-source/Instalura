@@ -6,14 +6,20 @@ import Menu from '../../commons/Menu';
 import Modal from '../../commons/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 
-const WebsitePageContext = createContext({
+export const WebsitePageContext = createContext({
   toggleModalCadastro: () => {},
 });
 
 const WebsitePageWrapper = ({ children }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   return (
-    <WebsitePageContext.Provider>
+    <WebsitePageContext.Provider
+      value={{
+        toggleModalCadastro: () => {
+          (setModalOpen(!isModalOpen));
+        },
+      }}
+    >
       <Box
         display="flex"
         flexDirection="column"

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { Grid } from '../../foundation/layout/Grid';
+import { WebsitePageContext } from '../../wrappers/WebsitePage';
 
 const Main = () => {
+  const websitePageContext = useContext(WebsitePageContext);
+
   return (
     <>
       <Grid.Container
@@ -53,9 +56,7 @@ const Main = () => {
                 md: 'initial',
               }}
               display="block"
-              onClick={() => {
-                setModalOpen(!isModalOpen);
-              }}
+              onClick={websitePageContext.toggleModalCadastro}
             >
               Cadastrar
             </Button>
