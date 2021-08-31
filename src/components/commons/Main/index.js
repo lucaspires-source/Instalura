@@ -2,29 +2,10 @@ import React, { useState } from 'react';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { Grid } from '../../foundation/layout/Grid';
-import Modal from '../Modal';
-import FormCadastro from '../../patterns/FormCadastro';
-import Menu from '../Menu';
 
 const Main = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
   return (
     <>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalOpen(false);
-        }}
-      >
-        {
-          (props) => (
-            <FormCadastro props={props} />
-          )
-        }
-
-      </Modal>
-      <Menu onCadastrarClick={() => (setModalOpen(!isModalOpen))} />
       <Grid.Container
         marginTop={{
           xs: '32px',
