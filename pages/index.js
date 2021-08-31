@@ -4,9 +4,11 @@ import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
 
 export default function Home() {
   return (
-    <WebsitePageWrapper seoProps={{ headTitle: 'Home' }}>
+    <WebsitePageWrapper
+      seoProps={{ headTitle: 'Home' }}
+      menuProps={{ display: false }}
+    >
       <Main />
     </WebsitePageWrapper>
-
   );
 }

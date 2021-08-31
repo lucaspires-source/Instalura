@@ -51,8 +51,12 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
 };
 
 export default WebsitePageWrapper;
-
+WebsitePageWrapper.defaultProps = {
+  seoProps: {},
+};
 WebsitePageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  seoProps: PropTypes.node.isRequired,
+  seoProps: PropTypes.shape({
+    headTitle: PropTypes.string,
+  }),
 };
