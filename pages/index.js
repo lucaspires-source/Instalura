@@ -4,7 +4,7 @@ import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
 
 export default function Home() {
   return (
-    <WebsitePageWrapper>
+    <WebsitePageWrapper seoProps={{ headTitle: 'Home' }}>
       <Main />
     </WebsitePageWrapper>
 
