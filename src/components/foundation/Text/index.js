@@ -73,7 +73,7 @@ const Text = ({
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <TextBase variant={variant} as={tag} {...props}>
+    <TextBase variant={variant} as={tag} {...props} href={href}>
       {children}
     </TextBase>
   );
