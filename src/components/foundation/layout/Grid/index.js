@@ -8,7 +8,6 @@ const Col = styled.div`
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  display:flex;
   ${({ value }) => {
     if (typeof value === 'number') {
       return css`

@@ -14,6 +14,10 @@ const FAQQuestionScreen = ({ category, question }) => {
         xs: '32px',
         md: '80px',
       }}
+      flexDirection={{
+        xs: 'column-reverse',
+        md: 'row',
+      }}
     >
       <Grid.Row
         flexDirection={{
