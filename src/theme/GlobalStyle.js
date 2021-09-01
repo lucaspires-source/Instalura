@@ -23,4 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
+  a{
+    text-decoration:none
+  }
 `;

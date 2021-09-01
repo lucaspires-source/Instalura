@@ -27,6 +27,8 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
         display="flex"
         flexDirection="column"
         flex="1"
+        flexWrap="wrap"
+        justifyContent="space-between"
       >
         <Modal
           isOpen={isModalOpen}
