@@ -5,14 +5,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore .",
-    "commit":"cz"
+    "commit": "cz"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
     "commitizen": "^4.2.4",
     "framer-motion": "^4.1.17",
     "lodash": "^4.17.21",
-    "next": "^11.1.0",
+    "next": "^11.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
