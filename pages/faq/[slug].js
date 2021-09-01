@@ -11,10 +11,38 @@ const PageFAQInterna = ({ category, question }) => (
 PageFAQInterna.propTypes = FAQQuestionScreen.propTypes;
 export default WebsitePageHOC(PageFAQInterna);
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
+  const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq')
+    .then(async (res) => {
+      const response = await res.json();
+      return response.data;
+    });
+  const data = faqCategories.reduce((value, faqCategory) => {
+    const foundQuestion = faqCategory.questions.find((question) => {
+      if (question.slug === params.slug) {
+        return true;
+      }
+      return false;
+    });
+
+    if (foundQuestion) {
+      return {
+        ...value,
+        category: faqCategory,
+        question: foundQuestion,
+      };
+    }
+    return value;
+  }, {});
   return {
     props: {
-
+      category: data.category,
+      question: data.question,
+      pageWrapperProps: {
+        seoProps: {
+          headTitle: data.question.title,
+        },
+      },
     },
   };
 }
