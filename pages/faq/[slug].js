@@ -48,9 +48,26 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: [
+  const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq')
+    .then(async (res) => {
+      const response = await res.json();
+      return response.data;
+    });
 
-    ],
+  const paths = faqCategories.reduce((value, faqCategory) => {
+    const questionsPaths = faqCategory.questions.map((question) => {
+      const questionSlug = question.slug;
+      return { params: { slug: questionSlug } };
+    });
+
+    return [
+      ...value,
+      ...questionsPaths,
+    ];
+  }, []);
+
+  return {
+    paths,
+    fallback: false,
   };
 }
