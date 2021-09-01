@@ -1,30 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { Grid } from '../../foundation/layout/Grid';
-import Modal from '../Modal';
-import FormCadastro from '../../patterns/FormCadastro';
-import Menu from '../Menu';
+import { WebsitePageContext } from '../../wrappers/WebsitePage';
+import { Box } from '../../foundation/layout/Box';
 
 const Main = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const websitePageContext = useContext(WebsitePageContext);
 
   return (
-    <>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalOpen(false);
-        }}
-      >
-        {
-          (props) => (
-            <FormCadastro props={props} />
-          )
-        }
-
-      </Modal>
-      <Menu onCadastrarClick={() => (setModalOpen(!isModalOpen))} />
+    <Box
+      display="flex"
+      flexDirection="column"
+      flex="1"
+    >
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -72,9 +61,7 @@ const Main = () => {
                 md: 'initial',
               }}
               display="block"
-              onClick={() => {
-                setModalOpen(!isModalOpen);
-              }}
+              onClick={websitePageContext.toggleModalCadastro}
             >
               Cadastrar
             </Button>
@@ -88,7 +75,7 @@ const Main = () => {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-    </>
+    </Box>
   );
 };
 
