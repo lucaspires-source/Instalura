@@ -1,15 +1,14 @@
 import React from 'react';
 import WebsitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
+import FAQQuestionScreen from '../../src/components/screens/FAQQuestionScreen';
 
-const PageFAQInterna = () => {
-  console.log('oi');
-  return (
-    <div>
-      Faq Interna
-    </div>
-  );
-};
-
+const PageFAQInterna = ({ category, question }) => (
+  <FAQQuestionScreen
+    question={question}
+    category={category}
+  />
+);
+PageFAQInterna.propTypes = FAQQuestionScreen.propTypes;
 export default WebsitePageHOC(PageFAQInterna);
 
 export async function getStaticProps() {
