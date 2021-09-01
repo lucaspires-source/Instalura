@@ -10,7 +10,7 @@ export default function FAQScreen({ faqCategories }) {
       <Grid.Container style={{ flex: 1 }}>
         <Grid.Row
           marginTop={{ xs: '32px', md: '1' }}
-          marginBottom={{ xs: '32px', md: '1rem' }}
+          marginBottom={{ xs: '32px', md: '5rem' }}
           justifyContent="center"
         >
           <Grid.Col
