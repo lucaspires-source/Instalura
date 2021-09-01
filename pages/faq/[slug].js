@@ -1,4 +1,5 @@
 import React from 'react';
+import WebsitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
 const PageFAQInterna = () => {
   console.log('oi');
@@ -9,4 +10,4 @@ const PageFAQInterna = () => {
   );
 };
 
-export default PageFAQInterna;
+export default WebsitePageHOC(PageFAQInterna);
