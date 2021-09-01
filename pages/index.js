@@ -1,14 +1,9 @@
-import React from 'react';
 import Main from '../src/components/commons/Main';
-import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
+import WebsitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function Home() {
-  return (
-    <WebsitePageWrapper
-      seoProps={{ headTitle: 'Home' }}
-      menuProps={{ display: false }}
-    >
-      <Main />
-    </WebsitePageWrapper>
-  );
-}
+export default WebsitePageHOC(Main, {
+  pageWrapperProps: {
+    seoProps: { headTitle: 'Home' },
+    menuProps: { display: false },
+  },
+});

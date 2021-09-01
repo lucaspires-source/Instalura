@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import theme from '../../../../theme';
 import { GlobalStyle } from '../../../../theme/GlobalStyle';
 
-const WebsiteMasterProvider = ({ children }) => (
+const WebsiteGlobalProvider = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     {children}
   </ThemeProvider>
 );
 
-export default WebsiteMasterProvider;
+export default WebsiteGlobalProvider;
 
-WebsiteMasterProvider.propTypes = {
+WebsiteGlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
