@@ -2,9 +2,10 @@ import React from 'react';
 import FAQScreen from '../../src/components/screens/FAQScreen';
 import WebsitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
-const PageFAQ = (props) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <FAQScreen {...props} />
+// eslint-disable-next-line react/prop-types
+const PageFAQ = ({ faqCategories }) => (
+
+  <FAQScreen faqCategories={faqCategories} />
 );
 
 export default WebsitePageHOC(PageFAQ, {
