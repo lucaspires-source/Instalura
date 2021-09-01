@@ -7,7 +7,7 @@ const PageFAQ = (props) => (
   <FAQScreen {...props} />
 );
 
-export default WebsitePageHOC(PageFAQ,{
+export default WebsitePageHOC(PageFAQ, {
   pageWrapperProps: {
     seoProps: { headTitle: 'FAQ' },
   },
