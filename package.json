@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore .",
-    "commit": "cz"
+    "commit": "cz",
+    "test:integration:open":"cypress open"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
