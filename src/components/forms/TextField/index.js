@@ -21,11 +21,12 @@ Input.defaultProps = {
 };
 
 export default function TextField({
-  placeholder, name, onChange, value,
+  placeholder, name, onChange, value, ...props
 }) {
   return (
     <InputWrapper>
-      <Input type="text" placeholder={placeholder} name={name} onChange={onChange} value={value} />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Input type="text" placeholder={placeholder} name={name} onChange={onChange} value={value} {...props} />
     </InputWrapper>
   );
 }

@@ -12,7 +12,7 @@ export const WebsitePageContext = createContext({
   toggleModalCadastro: () => {},
 });
 
-const WebsitePageWrapper = ({ children, seoProps }) => {
+const WebsitePageWrapper = ({ children, seoProps, menuProps }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   return (
     <WebsitePageContext.Provider
@@ -43,7 +43,7 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
         }
 
         </Modal>
-        <Menu onCadastrarClick={() => (setModalOpen(!isModalOpen))} />
+        {menuProps.display ? <Menu onCadastrarClick={() => (setModalOpen(!isModalOpen))} /> : ''}
         {children}
         <Footer />
       </Box>
@@ -55,10 +55,16 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
 export default WebsitePageWrapper;
 WebsitePageWrapper.defaultProps = {
   seoProps: {},
+  menuProps: {
+    display: true,
+  },
 };
 WebsitePageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   seoProps: PropTypes.shape({
     headTitle: PropTypes.string,
+  }),
+  menuProps: PropTypes.shape({
+    display: PropTypes.bool,
   }),
 };
