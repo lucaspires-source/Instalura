@@ -1,46 +1,15 @@
 import React from 'react';
-import { Button } from '../../src/components/commons/Button';
 import Link from '../../src/components/commons/Link';
-import TextField from '../../src/components/forms/TextField';
 import { Box } from '../../src/components/foundation/layout/Box';
 import { Grid } from '../../src/components/foundation/layout/Grid';
 import Text from '../../src/components/foundation/Text';
 import { WebsitePageContext } from '../../src/components/wrappers/WebsitePage';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 import { Logo } from '../../src/theme/Logo';
-
-const LoginForm = () => {
-  console.log('oi');
-  return (
-    <form id="formCadastro" action="/app/profile">
-      <TextField
-        placeholder="Usuário"
-        name="usuario"
-      />
-      <TextField
-        placeholder="Senha"
-        name="senha"
-        type="password"
-      />
-
-      <Button
-        type="submit"
-        variant="primary.main"
-        margin={{
-          xs: '0 auto',
-          md: 'initial',
-        }}
-        fullWidth
-      >
-        Entrar
-      </Button>
-    </form>
-  );
-};
+import FormLogin from '../../src/components/patterns/FormLogin';
 
 const LoginScreen = () => {
   const websitePageContext = React.useContext(WebsitePageContext);
-
   return (
     <Grid.Container
       display="flex"
@@ -74,7 +43,7 @@ const LoginScreen = () => {
               <Logo size="large" />
             </Link>
           </Box>
-          <LoginForm />
+          <FormLogin />
           <Text
             variant="paragraph1"
             tag="p"
@@ -84,7 +53,7 @@ const LoginScreen = () => {
             {'Não tem uma conta? '}
             <Link
               href="/"
-              color="secondary.main"
+              color="primary.main"
               onClick={(event) => {
                 event.preventDefault();
                 websitePageContext.toggleModalCadastro();
