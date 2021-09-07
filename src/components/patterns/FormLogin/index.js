@@ -1,26 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
+import useForm from '../../../infra/hooks/forms/useForm';
 
-const useForm = ({ initialValues, onSubmit }) => {
-  const [values, setValues] = useState(initialValues);
-  return {
-    values,
-    handleSubmit(e) {
-      e.preventDefault();
-      onSubmit(values);
-    },
-    handleChange(e) {
-      const fieldName = e.target.getAttribute('name');
-      const { value } = e.target;
-      setValues((currentValues) => ({
-        ...currentValues,
-        [fieldName]: value,
-      }));
-    },
-  };
-};
 const FormLogin = () => {
   const router = useRouter();
   const initialValues = {
