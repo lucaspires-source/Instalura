@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 
-const useForm = ({ initialValues }) => {
+const useForm = ({ initialValues, onSubmit }) => {
   const [values, setValues] = useState(initialValues);
   return {
     values,
     handleSubmit(e) {
       e.preventDefault();
+      onSubmit(values);
     },
     handleChange(e) {
       const fieldName = e.target.getAttribute('name');
@@ -26,9 +27,12 @@ const FormLogin = () => {
   };
   const form = useForm({
     initialValues,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
   });
   return (
-    <form id="formCadastro" action="/app/profile" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
