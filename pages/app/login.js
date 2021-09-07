@@ -10,7 +10,6 @@ import FormLogin from '../../src/components/patterns/FormLogin';
 
 const LoginScreen = () => {
   const websitePageContext = React.useContext(WebsitePageContext);
-
   return (
     <Grid.Container
       display="flex"
