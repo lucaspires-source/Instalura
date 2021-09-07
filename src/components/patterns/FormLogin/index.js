@@ -30,8 +30,26 @@ const FormLogin = () => {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       router.push('/app/profile');
+      fetch('https://instalura-api-git-master-omariosouto.vercel.app/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: values.usuario,
+          password: values.senha,
+        }),
+      })
+        .then((resDoServer) => {
+          if (resDoServer.ok) {
+            return resDoServer.json();
+          }
+          throw new Error('Falha ao pegar dados do servidor');
+        })
+        .then((res) => {
+          console.log(res);
+        });
     },
   });
   return (
