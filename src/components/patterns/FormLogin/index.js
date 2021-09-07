@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 
@@ -21,6 +22,7 @@ const useForm = ({ initialValues, onSubmit }) => {
   };
 };
 const FormLogin = () => {
+  const router = useRouter();
   const initialValues = {
     usuario: '',
     senha: '',
@@ -29,6 +31,7 @@ const FormLogin = () => {
     initialValues,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      router.push('app/profile');
     },
   });
   return (
