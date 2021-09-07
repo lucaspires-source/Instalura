@@ -31,7 +31,7 @@ const FormLogin = () => {
     initialValues,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      router.push('app/profile');
+      router.push('/app/profile');
     },
   });
   return (
