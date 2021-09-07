@@ -41,14 +41,11 @@ const FormLogin = () => {
           password: values.senha,
         }),
       })
-        .then((resDoServer) => {
-          if (resDoServer.ok) {
-            return resDoServer.json();
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
           }
           throw new Error('Falha ao pegar dados do servidor');
-        })
-        .then((res) => {
-          console.log(res);
         });
     },
   });
