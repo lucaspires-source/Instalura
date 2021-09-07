@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import useForm from '../../../infra/hooks/forms/useForm';
+import { loginService } from '../../../services/login/loginService';
 
 const FormLogin = () => {
   const router = useRouter();
@@ -13,22 +14,12 @@ const FormLogin = () => {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
-      router.push('/app/profile');
-      fetch('https://instalura-api-git-master-omariosouto.vercel.app/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: values.usuario,
-          password: values.senha,
-        }),
+      loginService.login({
+        username: values.usuario,
+        password: values.senha,
       })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          throw new Error('Falha ao pegar dados do servidor');
+        .then(() => {
+          router.push('/app/profile');
         });
     },
   });
