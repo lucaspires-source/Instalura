@@ -1,16 +1,30 @@
 import { useState, useEffect } from 'react';
 
-const useForm = ({ initialValues, onSubmit }) => {
+const useForm = ({ initialValues, onSubmit, validateSchema }) => {
   const [values, setValues] = useState(initialValues);
 
   const [isFormDisabled, setIsFormDisabled] = useState(true);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouchedFields] = useState({});
 
   useEffect(() => {
-    if (values.usuario.length > 0) {
-      setIsFormDisabled(false);
-    } else {
-      setIsFormDisabled(true);
-    }
+    validateSchema(values)
+      .then(() => {
+        setIsFormDisabled(false);
+        setErrors({});
+      })
+      .catch((err) => {
+        const formatedErrors = err.inner.reduce((errorObjectAcc, currentError) => {
+          const fieldName = currentError.path;
+          const errorMessage = currentError.message;
+          return {
+            ...errorObjectAcc,
+            [fieldName]: errorMessage,
+          };
+        }, {});
+        setErrors(formatedErrors);
+        setIsFormDisabled(true);
+      });
   }, [values]);
   return {
     values,
@@ -28,6 +42,16 @@ const useForm = ({ initialValues, onSubmit }) => {
       }));
     },
     isFormDisabled,
+    errors,
+    touched,
+    handleBlur(e) {
+      const fieldName = e.target.getAttribute('name');
+
+      setTouchedFields({
+        ...touched,
+        [fieldName]: true, // usuario: true, senha: true ...
+      });
+    },
   };
 };
 

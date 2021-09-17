@@ -35,6 +35,11 @@ const FormLogin = () => {
           router.push('/app/profile');
         });
     },
+    async validateSchema(values) {
+      return loginSchema.validate(values, {
+        abortEarly: false,
+      });
+    },
   });
   return (
     <form id="formCadastro" onSubmit={form.handleSubmit}>
@@ -43,6 +48,9 @@ const FormLogin = () => {
         name="usuario"
         value={form.values.usuario}
         onChange={form.handleChange}
+        onBlur={form.handleBlur}
+        error={form.errors.usuario}
+        isTouched={form.touched.usuario}
       />
       <TextField
         placeholder="Senha"
@@ -50,6 +58,9 @@ const FormLogin = () => {
         type="password"
         value={form.values.senha}
         onChange={form.handleChange}
+        onBlur={form.handleBlur}
+        error={form.errors.usuario}
+        isTouched={form.touched.usuario}
       />
 
       <Button
@@ -64,6 +75,9 @@ const FormLogin = () => {
       >
         Entrar
       </Button>
+      <pre>
+        {JSON.stringify(form.touched, null, 4)}
+      </pre>
     </form>
   );
 };
