@@ -1,7 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useForm = ({ initialValues, onSubmit }) => {
   const [values, setValues] = useState(initialValues);
+
+  const [isFormDisabled, setIsFormDisabled] = useState(true);
+
+  useEffect(() => {
+    if (values.usuario.length > 0) {
+      setIsFormDisabled(false);
+    } else {
+      setIsFormDisabled(true);
+    }
+  }, [values]);
   return {
     values,
     handleSubmit(e) {
@@ -14,8 +24,10 @@ const useForm = ({ initialValues, onSubmit }) => {
       setValues((currentValues) => ({
         ...currentValues,
         [fieldName]: value,
+
       }));
     },
+    isFormDisabled,
   };
 };
 
