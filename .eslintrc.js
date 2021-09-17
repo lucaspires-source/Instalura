@@ -9,6 +9,19 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
+  overrides: [
+    {
+      files: [
+        '**/*.test.js',
+      ],
+      plugins: ['jest'],
+      env: {
+        jest: true,
+      },
+      // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+      ...require('eslint-plugin-jest').configs.recommended,
+    },
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
