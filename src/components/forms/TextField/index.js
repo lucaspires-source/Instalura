@@ -21,19 +21,37 @@ Input.defaultProps = {
 };
 
 export default function TextField({
-  placeholder, name, onChange, value, ...props
+  placeholder, name, onChange, value, error, isTouched, ...props
 }) {
+  const hasError = Boolean(error);
+  const isFieldInvalid = hasError && isTouched;
   return (
     <InputWrapper>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Input type="text" placeholder={placeholder} name={name} onChange={onChange} value={value} {...props} />
+      {isFieldInvalid && (
+      <Text
+        variant="smallestException"
+        color="error.main"
+        role="alert"
+      >
+        {error}
+      </Text>
+      )}
     </InputWrapper>
   );
 }
+
+TextField.defaultProps = {
+  error: '',
+  isTouched: false,
+};
 
 TextField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  isTouched: PropTypes.bool,
 };
