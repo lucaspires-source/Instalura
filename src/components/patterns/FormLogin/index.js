@@ -59,8 +59,8 @@ const FormLogin = () => {
         value={form.values.senha}
         onChange={form.handleChange}
         onBlur={form.handleBlur}
-        error={form.errors.usuario}
-        isTouched={form.touched.usuario}
+        error={form.errors.senha}
+        isTouched={form.touched.senha}
       />
 
       <Button
@@ -75,9 +75,6 @@ const FormLogin = () => {
       >
         Entrar
       </Button>
-      <pre>
-        {JSON.stringify(form.touched, null, 4)}
-      </pre>
     </form>
   );
 };
