@@ -39,6 +39,9 @@ export const loginService = {
           maxAge: DAY_IN_SECONDS * 7,
         });
         return res;
+      })
+      .catch((err) => {
+        console.error(err);
       });
   },
 };
