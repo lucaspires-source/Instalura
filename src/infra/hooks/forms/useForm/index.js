@@ -44,6 +44,7 @@ const useForm = ({ initialValues, onSubmit, validateSchema }) => {
     isFormDisabled,
     errors,
     touched,
+    setIsFormDisabled,
     handleBlur(e) {
       const fieldName = e.target.getAttribute('name');
 
