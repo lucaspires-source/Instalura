@@ -12,13 +12,26 @@ describe('<TextField />', () => {
         name="nome"
       />,
 
-    )
+    );
     const textField = screen.getByPlaceholderText(/nome/i);
     expect(textField).toMatchSnapshot();
   });
 
   describe('when field is valid', () => {
+    describe('and user is typing', () => {
+      test('the value must be updated', () => {
+        render(
+          <TextField
+            placeholder="nome"
+            value="nome"
+            onChange={() => {}}
+            name="nome"
+          />,
 
+        );
+        expect(true).toBe(true);
+      });
+    });
   });
 
   describe('when field is invalid', () => {
@@ -34,9 +47,11 @@ describe('<TextField />', () => {
         />,
 
       );
-      const emailField = screen.getByPlaceholderText(/email/i);
+
+      const inputEmail = screen.getByPlaceholderText(/email/i);
       const alert = screen.getByRole('alert');
-      expect(emailField).toHaveValue('lucas@gmail.com');
+      expect(inputEmail).toHaveValue('lucas@gmail.com');
+      expect(inputEmail).toMatchSnapshot();
       expect(alert).toHaveTextContent('o Campo email tem que ser preenchido');
     });
   });
