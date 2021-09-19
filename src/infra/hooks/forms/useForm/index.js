@@ -25,8 +25,9 @@ const useForm = ({ initialValues, onSubmit, validateSchema }) => {
       setIsFormDisabled(true);
     }
   }
+
   useEffect(() => {
-    validateValues();
+    validateValues(values);
   }, [values]);
   return {
     values,

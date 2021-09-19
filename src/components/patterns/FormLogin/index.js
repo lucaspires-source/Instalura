@@ -14,7 +14,7 @@ const loginSchema = yup.object().shape({
   senha: yup
     .string()
     .required('"Senha" é obrigatória')
-    .min(6, 'Sua senha precisa ter ao menos 8 caracteres'),
+    .min(6, 'Sua senha precisa ter ao menos 6 caracteres'),
 });
 
 // eslint-disable-next-line react/prop-types
