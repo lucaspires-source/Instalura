@@ -24,7 +24,7 @@ const BASE_URL = isStagingEnv
   : 'https://instalura-api.omariosouto.vercel.app';
 export const loginService = {
   async login({ username, password }) {
-    return HttpClient(`${BASE_URL}/api/login`, {
+    return HttpClient(`${BASE_URL}/api/login/`, {
       method: 'POST',
       body: {
         username,
@@ -39,6 +39,9 @@ export const loginService = {
           maxAge: DAY_IN_SECONDS * 7,
         });
         return res;
+      })
+      .catch((err) => {
+        console.error(err);
       });
   },
 };

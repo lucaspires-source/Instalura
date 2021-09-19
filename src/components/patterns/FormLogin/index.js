@@ -14,10 +14,11 @@ const loginSchema = yup.object().shape({
   senha: yup
     .string()
     .required('"Senha" é obrigatória')
-    .min(8, 'Sua senha precisa ter ao menos 8 caracteres'),
+    .min(6, 'Sua senha precisa ter ao menos 6 caracteres'),
 });
 
-const FormLogin = () => {
+// eslint-disable-next-line react/prop-types
+const FormLogin = ({ onSubmit }) => {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -27,12 +28,19 @@ const FormLogin = () => {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
+      form.setIsFormDisabled(true);
       loginService.login({
         username: values.usuario,
         password: values.senha,
       })
         .then(() => {
           router.push('/app/profile');
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          form.setIsFormDisabled(false);
         });
     },
     async validateSchema(values) {
@@ -42,7 +50,7 @@ const FormLogin = () => {
     },
   });
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
