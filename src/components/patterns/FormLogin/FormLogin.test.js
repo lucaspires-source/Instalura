@@ -18,6 +18,7 @@ describe('<FormLogin />', () => {
           <FormLogin onSubmit={onSubmit} />,
         );
       });
+
       const submitButton = screen.getByRole('button');
       expect(submitButton).toBeDisabled();
 
@@ -30,20 +31,23 @@ describe('<FormLogin />', () => {
       await waitFor(() => expect(passwordInput).toHaveValue('password'));
 
       expect(submitButton).not.toBeDisabled();
+
       user.click(submitButton);
       expect(onSubmit).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('when form fields are invalid', () => {
-    test('complete the submission', async () => {
-      await act(async () => {
-        render(
-          <FormLogin onSubmit={onSubmit} />,
-        );
-      });
+    test('displays the respective errors', async () => {
+      render(<FormLogin onSubmit={onSubmit} />);
 
-      expect(true).toBe(true);
+      const userInput = screen.getByPlaceholderText('Usuário');
+      userInput.focus();
+      userInput.blur();
+
+      await waitFor(() => screen.getByRole('alert'));
+
+      expect(screen.getByRole('alert')).toHaveTextContent('Preencha ao menos 2 caracteres');
     });
   });
 });
