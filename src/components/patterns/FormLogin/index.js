@@ -17,7 +17,8 @@ const loginSchema = yup.object().shape({
     .min(6, 'Sua senha precisa ter ao menos 8 caracteres'),
 });
 
-const FormLogin = () => {
+// eslint-disable-next-line react/prop-types
+const FormLogin = ({ onSubmit }) => {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -49,7 +50,7 @@ const FormLogin = () => {
     },
   });
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
