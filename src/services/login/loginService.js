@@ -1,4 +1,4 @@
-import { setCookie } from 'nookies';
+import { setCookie, destroyCookie } from 'nookies';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
@@ -23,8 +23,10 @@ const BASE_URL = isStagingEnv
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
   : 'https://instalura-api.omariosouto.vercel.app';
 export const loginService = {
-  async login({ username, password }) {
-    return HttpClient(`${BASE_URL}/api/login/`, {
+  async login({ username, password },
+    setCookieModule = setCookie,
+    HttpClientModule = HttpClient) {
+    return HttpClientModule(`${BASE_URL}/api/login/`, {
       method: 'POST',
       body: {
         username,
@@ -33,15 +35,19 @@ export const loginService = {
     })
       .then((res) => {
         const { token } = res.data;
+        const hasToken = token;
+        if (!hasToken) {
+          throw new Error('Failed to login');
+        }
         const DAY_IN_SECONDS = 86400;
-        setCookie(null, 'APP_TOKEN', token, {
+        setCookieModule(null, 'APP_TOKEN', token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
-        return res;
-      })
-      .catch((err) => {
-        console.error(err);
+        return { token };
       });
+  },
+  async logout(destroyCookieModule = destroyCookie) {
+    destroyCookieModule(null, 'APP_TOKEN');
   },
 };
