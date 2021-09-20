@@ -6,6 +6,13 @@ describe('loginService', () => {
   });
 
   describe('logout()', () => {
+    describe('when user try to logout and suceed', () => {
+      test('remove its token', async () => {
+        const destroyCookie = jest.fn();
+        await loginService.logout(destroyCookie);
 
+        expect(destroyCookie).toHaveBeenCalledWith(null, 'APP_TOKEN');
+      });
+    });
   });
 });
