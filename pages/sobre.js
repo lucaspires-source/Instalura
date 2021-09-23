@@ -1,4 +1,5 @@
 import React from 'react';
+import { GraphQLClient, gql } from 'graphql-request';
 import WebsitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 import { Box } from '../src/components/foundation/layout/Box';
 import { Grid } from '../src/components/foundation/layout/Grid';
