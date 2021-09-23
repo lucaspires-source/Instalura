@@ -32,3 +32,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#token
+src/infra/env/apiTokenEnv/index.js
+src/infra/env/apiTokenEnv/index.js
+.apiTokenEnv
