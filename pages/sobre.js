@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
+import PropTypes from 'prop-types';
 import WebsitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 import { Box } from '../src/components/foundation/layout/Box';
 import { Grid } from '../src/components/foundation/layout/Grid';
@@ -55,10 +56,10 @@ const PageSobre = ({ messages }) => {
               tag="h2"
               color="tertiary.main"
             >
-              {messages.pageTitle}
+              {messages.pageSobre.pageTitle}
             </Text>
             <Box>
-              {messages.pageDescription}
+              {messages.pageSobre.pageDescription}
             </Box>
           </Grid.Col>
         </Grid.Row>
@@ -72,3 +73,8 @@ export default WebsitePageHOC(PageSobre, {
     seoProps: { headTitle: 'Sobre' },
   },
 });
+
+PageSobre.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  messages: PropTypes.object.isRequired,
+};
