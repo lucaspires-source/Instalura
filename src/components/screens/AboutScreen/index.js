@@ -27,12 +27,11 @@ const AboutScreen = ({ messages }) => (
           >
             {messages.pageSobre.pageTitle}
           </Text>
-          <Box>
-            dangerouslySetInnerHTML=
-            {{
-              __html: messages.pageSobre.pageDescription,
-            }}
-          </Box>
+          <Box dangerouslySetInnerHTML={{
+            __html: messages.pageSobre.pageDescription,
+          }}
+          />
+
         </Grid.Col>
       </Grid.Row>
     </Grid.Container>
