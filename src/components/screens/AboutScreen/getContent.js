@@ -1,15 +1,6 @@
-import { GraphQLClient, gql } from 'graphql-request';
+import CMSGraphQLClient from '../../../infra/cms/CMSGraphQLClient';
 
 export async function getContent() {
-  const DatoCMSURL = 'https://graphql.datocms.com/';
-  const TOKEN = process.env.DATO_CMS_TOKEN;
-
-  const client = new GraphQLClient(DatoCMSURL, {
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-
-    },
-  });
   const query = gql`
           query {
             pageSobre {
@@ -18,7 +9,17 @@ export async function getContent() {
             }
           }
         `;
-  const messages = await client.request(query);
+  const client = CMSGraphQLClient();
+  const res = await client.query({ query });
 
-  return messages;
+  return res.data.messages;
 }
+
+const DatoCMSURL = 'https://graphql.datocms.com/';
+const TOKEN = process.env.DATO_CMS_TOKEN;
+const client = new GraphQLClient(DatoCMSURL, {
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+
+  },
+});
