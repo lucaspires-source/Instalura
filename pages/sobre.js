@@ -1,10 +1,10 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import WebsitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
-import { TOKEN } from '../src/infra/env/apiTokenEnv';
 import AboutScreen from '../src/components/screens/AboutScreen';
 
 export async function getStaticProps() {
   const DatoCMSURL = 'https://graphql.datocms.com/';
+  const TOKEN = process.env.DATO_CMS_TOKEN;
 
   const client = new GraphQLClient(DatoCMSURL, {
     headers: {
