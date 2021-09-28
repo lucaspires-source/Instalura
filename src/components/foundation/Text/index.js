@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import React from 'react';
+import React, { useContext } from 'react';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import propToStyle from '../../../theme/utils/propToStyle';
 import Link from '../../commons/Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export const TextStyleVartiansMap = {
   title: css`
@@ -63,6 +64,8 @@ const TextBase = styled.span`
 const Text = ({
   variant, tag, children, href, cmsKey, ...props
 }) => {
+  const websitePageContext = useContext(WebsitePageContext);
+  console.log(websitePageContext.getCMSContent.cmsKey);
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Footer from '../../commons/Footer';
 import { Box } from '../../foundation/layout/Box';
@@ -7,11 +7,9 @@ import Menu from '../../commons/Menu';
 import Modal from '../../commons/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../commons/SEO';
+import { WebsitePageContext } from './context';
 
-export const WebsitePageContext = createContext({
-  toggleModalCadastro: () => {},
-});
-
+export { WebsitePageContext };
 const WebsitePageWrapper = ({ children, seoProps, menuProps }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   return (
