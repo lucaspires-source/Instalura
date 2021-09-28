@@ -9,7 +9,7 @@ import WebsiteGlobalProvider from '../provider';
 // eslint-disable-next-line max-len
 const WebsitePageHOC = (PageComponent, { pageWrapperProps } = { pageWrapperProps: {} }) => (props) => (
   <WebsiteGlobalProvider>
-    <WebsitePageWrapper {...pageWrapperProps} {...props.pageWrapperProps}>
+    <WebsitePageWrapper {...pageWrapperProps} {...props.pageWrapperProps} messages={props.messages}>
       <PageComponent {...props} />
     </WebsitePageWrapper>
   </WebsiteGlobalProvider>

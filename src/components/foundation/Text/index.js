@@ -65,19 +65,19 @@ const Text = ({
   variant, tag, children, href, cmsKey, ...props
 }) => {
   const websitePageContext = useContext(WebsitePageContext);
-  console.log(websitePageContext.getCMSContent.cmsKey);
+  const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <TextBase href={href} variant={variant} as={Link} {...props}>
-        {cmsKey || children}
+        {componentContent}
       </TextBase>
     );
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <TextBase variant={variant} as={tag} {...props} href={href}>
-      {cmsKey || children}
+      {componentContent}
     </TextBase>
   );
 };
