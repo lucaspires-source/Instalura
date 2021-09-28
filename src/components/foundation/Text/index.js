@@ -66,15 +66,15 @@ const Text = ({
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
-      <TextBase href={href} variant={variant} as={Link} {...props} cmsKey={cmsKey}>
-        {children}
+      <TextBase href={href} variant={variant} as={Link} {...props}>
+        {cmsKey || children}
       </TextBase>
     );
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <TextBase variant={variant} as={tag} {...props} href={href} cmsKey={cmsKey}>
-      {children}
+    <TextBase variant={variant} as={tag} {...props} href={href}>
+      {cmsKey || children}
     </TextBase>
   );
 };
@@ -84,7 +84,7 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
-  cmsKey: '',
+  cmsKey: null,
 };
 
 Text.propTypes = {
