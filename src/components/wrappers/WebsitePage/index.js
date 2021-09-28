@@ -21,9 +21,8 @@ const WebsitePageWrapper = ({
         toggleModalCadastro: () => {
           (setModalOpen(!isModalOpen));
         },
-        getCMSContent: (cmsKey) => {
-          get(messages, cmsKey);
-        },
+        getCMSContent: (cmsKey) => get(messages, cmsKey)
+        ,
       }}
     >
       <SEO {...seoProps} />

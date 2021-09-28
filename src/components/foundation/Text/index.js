@@ -66,6 +66,7 @@ const Text = ({
 }) => {
   const websitePageContext = useContext(WebsitePageContext);
   const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
+  console.log(websitePageContext.getCMSContent(cmsKey));
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
@@ -87,7 +88,7 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
-  cmsKey: null,
+  cmsKey: undefined,
 };
 
 Text.propTypes = {
