@@ -61,19 +61,19 @@ const TextBase = styled.span`
   ${propToStyle('margin')}
 `;
 const Text = ({
-  variant, tag, children, href, ...props
+  variant, tag, children, href, cmsKey, ...props
 }) => {
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
-      <TextBase href={href} variant={variant} as={Link} {...props}>
+      <TextBase href={href} variant={variant} as={Link} {...props} cmsKey={cmsKey}>
         {children}
       </TextBase>
     );
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <TextBase variant={variant} as={tag} {...props} href={href}>
+    <TextBase variant={variant} as={tag} {...props} href={href} cmsKey={cmsKey}>
       {children}
     </TextBase>
   );
@@ -84,6 +84,7 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
+  cmsKey: '',
 };
 
 Text.propTypes = {
@@ -91,5 +92,6 @@ Text.propTypes = {
   children: PropTypes.node,
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException', 'subTitle', 'paragraph2']),
   href: PropTypes.string,
+  cmsKey: PropTypes.string,
 };
 export default Text;

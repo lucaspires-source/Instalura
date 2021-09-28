@@ -24,6 +24,7 @@ const AboutScreen = ({ messages }) => (
             variant="title"
             tag="h2"
             color="tertiary.main"
+            cmsKey="pageSobre.PageTitle"
           >
             {messages.pageSobre.pageTitle}
           </Text>
