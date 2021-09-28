@@ -66,7 +66,6 @@ const Text = ({
 }) => {
   const websitePageContext = useContext(WebsitePageContext);
   const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
-  console.log(websitePageContext.getCMSContent(cmsKey));
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
