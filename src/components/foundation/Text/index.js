@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import React from 'react';
+import React, { useContext } from 'react';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import propToStyle from '../../../theme/utils/propToStyle';
 import Link from '../../commons/Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export const TextStyleVartiansMap = {
   title: css`
@@ -61,20 +62,22 @@ const TextBase = styled.span`
   ${propToStyle('margin')}
 `;
 const Text = ({
-  variant, tag, children, href, ...props
+  variant, tag, children, href, cmsKey, ...props
 }) => {
+  const websitePageContext = useContext(WebsitePageContext);
+  const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
   if (props.href) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <TextBase href={href} variant={variant} as={Link} {...props}>
-        {children}
+        {componentContent}
       </TextBase>
     );
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <TextBase variant={variant} as={tag} {...props} href={href}>
-      {children}
+      {componentContent}
     </TextBase>
   );
 };
@@ -84,6 +87,7 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
+  cmsKey: undefined,
 };
 
 Text.propTypes = {
@@ -91,5 +95,6 @@ Text.propTypes = {
   children: PropTypes.node,
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException', 'subTitle', 'paragraph2']),
   href: PropTypes.string,
+  cmsKey: PropTypes.string,
 };
 export default Text;
