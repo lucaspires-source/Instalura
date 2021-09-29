@@ -53,6 +53,9 @@ export const loginService = {
           maxAge: DAY_IN_SECONDS * 7,
         });
         return { token };
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
   async logout(destroyCookieModule = destroyCookie) {
