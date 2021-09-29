@@ -4,7 +4,7 @@ import { authService } from '../auth/authService';
 
 const BASE_URL = isStagingEnv
 // back end de Dev
-  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+  ? ' https://instalura-api-git-master-omariosouto.vercel.app'
 // back end de PROD
   : 'https://instalura-api.omariosouto.vercel.app';
 export const userService = {

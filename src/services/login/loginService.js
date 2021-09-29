@@ -5,14 +5,14 @@ import { HttpClient } from '../../infra/http/HttpClient';
 export const LOGIN_COOKIE_APP_TOKEN = 'APP_TOKEN';
 const BASE_URL = isStagingEnv
 // back end de Dev
-  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+  ? ' https://instalura-api-git-master-omariosouto.vercel.app'
 // back end de PROD
   : 'https://instalura-api.omariosouto.vercel.app';
 export const loginService = {
   async login({ username, password },
     setCookieModule = setCookie,
     HttpClientModule = HttpClient) {
-    return HttpClientModule(`${BASE_URL}/api/login/`, {
+    return HttpClientModule(`${BASE_URL}/api/login`, {
       method: 'POST',
       body: {
         username,

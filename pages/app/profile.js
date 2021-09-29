@@ -2,14 +2,16 @@ import React from 'react';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   const style = {
     display: 'flex',
     justifyContent: 'center',
   };
   return (
     <div style={style}>
-      <img src="https://www.saojoaoevangelista.mg.leg.br/institucional/noticias/site-em-construcao/image" alt="paginaconstrucao" />
+      <pre>
+        {JSON.stringify(props, null, 4)}
+      </pre>
     </div>
   );
 };
@@ -32,9 +34,6 @@ export async function getServerSideProps(ctx) {
       },
     };
   }
-
-  ctx.res.writeHead(307, { location: '/login' });
-  ctx.res.end();
 
   return {
     props: {},
