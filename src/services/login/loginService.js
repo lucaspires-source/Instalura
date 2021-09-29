@@ -1,34 +1,12 @@
 import { setCookie, destroyCookie } from 'nookies';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
+import { HttpClient } from '../../infra/http/HttpClient';
 
-async function HttpClient(url, { headers, body, ...options }) {
-  console.log(url, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    ...options,
-  });
-  return fetch(url, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    ...options,
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      throw new Error('Falha em pegar os dados do servidor :(');
-    });
-}
-
+export const LOGIN_COOKIE_APP_TOKEN = 'APP_TOKEN';
 const BASE_URL = isStagingEnv
-  ? 'https://instalura-api-git-master-omariosouto.vercel.app'
+// back end de Dev
+  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+// back end de PROD
   : 'https://instalura-api.omariosouto.vercel.app';
 export const loginService = {
   async login({ username, password },
@@ -44,21 +22,20 @@ export const loginService = {
       .then((res) => {
         const { token } = res.data;
         const hasToken = token;
+        console.log(token);
         if (!hasToken) {
           throw new Error('Failed to login');
         }
         const DAY_IN_SECONDS = 86400;
-        setCookieModule(null, 'APP_TOKEN', token, {
+        setCookieModule(null, LOGIN_COOKIE_APP_TOKEN, token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
         return { token };
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => err);
   },
-  async logout(destroyCookieModule = destroyCookie) {
-    destroyCookieModule(null, 'APP_TOKEN');
+  async logout(ctx, destroyCookieModule = destroyCookie) {
+    destroyCookieModule(ctx, LOGIN_COOKIE_APP_TOKEN, { path: '/' });
   },
 };
