@@ -22,7 +22,6 @@ export const loginService = {
       .then((res) => {
         const { token } = res.data;
         const hasToken = token;
-        console.log(token);
         if (!hasToken) {
           throw new Error('Failed to login');
         }

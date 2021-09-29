@@ -35,6 +35,9 @@ export async function getServerSideProps(ctx) {
     };
   }
 
+  ctx.res.writeHead(307, { location: '/login' });
+  ctx.res.end();
+
   return {
     props: {},
   };
