@@ -14,17 +14,17 @@ export const userService = {
       const token = await authService(ctx).getToken();
       const response = await HttpClient(url, {
         headers: {
-          Autorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       return {
         user: {
           totalLikes: 100,
         },
-        posts: [response.data],
+        posts: response.data,
       };
     } catch (err) {
-      throw new Error('Nao conseguiu trazer dados do cliente');
+      throw new Error('Não conseguimos pegar os posts');
     }
   },
 };

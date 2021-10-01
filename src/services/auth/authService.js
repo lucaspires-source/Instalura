@@ -4,15 +4,17 @@ import { loginService, LOGIN_COOKIE_APP_TOKEN } from '../login/loginService';
 import { HttpClient } from '../../infra/http/HttpClient';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
+const BASE_URL = isStagingEnv
+// back end de Dev
+  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+// back end de PROD
+  : 'https://instalura-api.omariosouto.vercel.app';
+
 export const authService = (ctx) => {
   const cookies = parseCookies(ctx);
-
+  console.log('cookies:', cookies);
   const token = cookies[LOGIN_COOKIE_APP_TOKEN];
-  const BASE_URL = isStagingEnv
-  // back end de Dev
-    ? 'https://instalura-api-git-master.omariosouto.vercel.app'
-  // back end de PROD
-    : 'https://instalura-api.omariosouto.vercel.app';
+  console.log('token no authService:', token);
 
   return {
     async getToken() {
@@ -22,7 +24,7 @@ export const authService = (ctx) => {
       return HttpClient(`${BASE_URL}/api/auth`, {
         method: 'POST',
         headers: {
-          Autorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then(({ data }) => {
