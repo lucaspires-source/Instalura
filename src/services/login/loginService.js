@@ -21,7 +21,6 @@ export const loginService = {
     })
       .then((res) => {
         const { token } = res.data;
-        console.log('token no service:', token);
         const hasToken = token;
         if (!hasToken) {
           throw new Error('Failed to login');
