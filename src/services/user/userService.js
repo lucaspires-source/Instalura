@@ -1,12 +1,7 @@
-import { isStagingEnv } from '../../infra/env/isStagingEnv';
 import { HttpClient } from '../../infra/http/HttpClient';
 import { authService } from '../auth/authService';
 
-const BASE_URL = isStagingEnv
-// back end de Dev
-  ? ' https://instalura-api-git-master-omariosouto.vercel.app'
-// back end de PROD
-  : 'https://instalura-api.omariosouto.vercel.app';
+const BASE_URL = 'https://instalura-api-git-master-omariosouto.vercel.app';
 export const userService = {
   async getProfilePage(ctx) {
     const url = `${BASE_URL}/api/users/posts`;
